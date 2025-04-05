@@ -52,6 +52,8 @@ type NominatimResponse struct {
 type PendingRequestIdsValue struct {
     DisplayName string `json:"display_name"`
     VaultAddress string `json:"vault_address"`
+    Latitude string `json:"latitude"`
+    Longitude string   `json:"longitude"`    
 }
 // type RawTxResponse
 

@@ -96,6 +96,8 @@ func (r *Router) handleIpGeoInfoRequest(req interface{}, client *ws.WSClient) (i
 		val := &types.PendingRequestIdsValue{
 			DisplayName: locationInfo.DisplayName,
 			VaultAddress: result.Vault,
+            Latitude: result.Latitude,
+            Longitude: result.Longitude,
 		}
 		r.pendingRequestIds.Store(requestID, val)
     case <-timeoutChan:
@@ -252,6 +254,8 @@ func (r *Router) handleSignedTx(req interface{}, client *ws.WSClient) (interface
         Type: "result",
         Payload: map[string]interface{}{
 			"geoResult": geoResult.DisplayName,
+            "latitude": geoResult.Latitude,
+            "longitude": geoResult.Longitude,
         },
     }); err != nil {
         return nil, fmt.Errorf("failed to send success message: %v", err)
