@@ -251,7 +251,7 @@ func (r *Router) handleSignedTx(req interface{}, client *ws.WSClient) (interface
     if err := r.wsHub.SendToClient(client, &types.WsResponse{
         Type: "result",
         Payload: map[string]interface{}{
-			"geoResult": geoResult,
+			"geoResult": geoResult.DisplayName,
         },
     }); err != nil {
         return nil, fmt.Errorf("failed to send success message: %v", err)
